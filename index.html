@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MICHI's profile | ハッピーもスイーツも🎵</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800&family=Pacifico&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ff007a;
+            --secondary: #7000ff;
+            --accent: #00f2ff;
+            --bg-dark: #0a0118;
+        }
+
+        body {
+            font-family: 'M PLUS Rounded 1c', sans-serif;
+            background-color: var(--bg-dark);
+            color: white;
+            overflow-x: hidden;
+        }
+
+        .font-pacifico { font-family: 'Pacifico', cursive; }
+
+        /* キラキラ背景アニメーション */
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at center, #1a0b2e 0%, #0a0118 100%);
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 24px;
+        }
+
+        .neon-text {
+            text-shadow: 0 0 10px var(--primary), 0 0 20px var(--primary);
+        }
+
+        .neon-border {
+            box-shadow: 0 0 15px var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .card-hover {
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .card-hover:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 10px 30px rgba(255, 0, 122, 0.3);
+        }
+
+        /* 弾けるアニメーション */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        .float-animation {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .gradient-text {
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        section {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- Header -->
+    <header class="fixed top-0 w-full z-50 p-6 flex justify-between items-center">
+        <h1 class="font-pacifico text-3xl text-white">MICHI</h1>
+        <div class="hidden md:flex space-x-8 font-bold">
+            <a href="#about" class="hover:text-[#ff007a] transition">ABOUT</a>
+            <a href="#favorites" class="hover:text-[#ff007a] transition">FAVORITES</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <main class="min-h-screen flex flex-col items-center justify-center relative px-4 text-center">
+        <div class="float-animation mb-8 relative">
+            <div class="w-48 h-48 md:w-64 md:h-64 rounded-full neon-border overflow-hidden bg-white/20">
+                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Michi&backgroundColor=ffdfbf&mouth=smile&eyes=happy" alt="MICHI" class="w-full h-full object-cover">
+            </div>
+            <div class="absolute -bottom-4 -right-4 bg-[#ff007a] text-white p-4 rounded-full font-bold transform rotate-12 shadow-lg">
+                HAPPY! ✨
+            </div>
+        </div>
+        
+        <h2 class="text-5xl md:text-7xl font-black mb-4 neon-text">MICHI's profile</h2>
+        <p class="text-xl md:text-2xl font-bold bg-white/10 px-6 py-2 rounded-full inline-block backdrop-blur-sm">
+            ハッピーもスイーツも🎵<br class="md:hidden">モリモリくらいがちょうどいい！✨
+        </p>
+
+        <div class="absolute bottom-10 animate-bounce">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+        </div>
+    </main>
+
+    <!-- Favorites Section -->
+    <section id="favorites" class="max-w-6xl mx-auto px-6 py-24">
+        <h3 class="text-4xl font-black mb-16 text-center italic gradient-text">My Favorites!</h3>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+            <!-- Favorite 1 -->
+            <div class="glass p-8 card-hover flex flex-col h-full">
+                <div class="text-6xl mb-6 text-center">🍚</div>
+                <h4 class="text-2xl font-bold mb-4 text-[#ff007a]">デカ盛りグルメ</h4>
+                <p class="leading-relaxed opacity-90 mb-6">
+                    「美味しいものは、お腹いっぱい食べるのが正義！お台場の食べ歩きも、全制覇が基本です🍚
+                </p>
+                <div class="mt-auto pt-4 border-t border-white/10 italic text-sm text-cyan-300">#大盛りは正義 #食べ歩き</div>
+            </div>
+
+            <!-- Favorite 2 -->
+            <div class="glass p-8 card-hover flex flex-col h-full">
+                <div class="text-6xl mb-6 text-center">💅</div>
+                <h4 class="text-2xl font-bold mb-4 text-[#ffb400]">キラキラネイル</h4>
+                <p class="leading-relaxed opacity-90 mb-6">
+                    「指先が可愛いと、スマホをいじってるだけでもテンションが爆上がりするんだよね💅」
+                </p>
+                <div class="mt-auto pt-4 border-t border-white/10 italic text-sm text-yellow-300">#ネイルアート #自分磨き</div>
+            </div>
+
+            <!-- Favorite 3 -->
+            <div class="glass p-8 card-hover flex flex-col h-full">
+                <div class="text-6xl mb-6 text-center">🌉</div>
+                <h4 class="text-2xl font-bold mb-4 text-[#00f2ff]">夜景 (Rainbow Bridge)</h4>
+                <p class="leading-relaxed opacity-90 mb-6">
+                    「どんなに悩みごとがあっても、このキラキラした景色を見ると、明日も自分らしくいこう！って思える大切な場所です🌉」
+                </p>
+                <div class="mt-auto pt-4 border-t border-white/10 italic text-sm text-pink-300">#お台場 #リセット</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Message Section -->
+    <section class="max-w-4xl mx-auto px-6 py-32 text-center">
+        <div class="glass p-12 relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#ff007a] to-transparent"></div>
+            <p class="text-3xl md:text-4xl font-black mb-6 leading-tight">
+                「明日も自分らしくいこう！」
+            </p>
+            <p class="text-lg opacity-80">
+                お台場のキラキラした空気感と、美味しいご飯が私のガソリン。<br>
+                みんなにもハッピーがモリモリ届きますように！✨
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 text-center opacity-50 text-sm">
+        <p>© 2024 MICHI. Stay Happy, Stay Hungry!</p>
+    </footer>
+
+    <script>
+        // 背景のキラキラパーティクル (Canvas)
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        window.addEventListener('resize', resize);
+        resize();
+
+        class Particle {
+            constructor() {
+                this.reset();
+            }
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 1;
+                this.speedX = (Math.random() - 0.5) * 0.5;
+                this.speedY = (Math.random() - 0.5) * 0.5;
+                this.color = Math.random() > 0.5 ? '#ff007a' : '#00f2ff';
+                this.alpha = Math.random();
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+            }
+            draw() {
+                ctx.globalAlpha = this.alpha;
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < 100; i++) {
+            particles.push(new Particle());
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animate);
+        }
+        animate();
+
+        // スクロールフェードイン
+        const observerOptions = {
+            threshold: 0.1
+        };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
